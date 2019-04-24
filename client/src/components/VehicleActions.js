@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { TextField, Button } from "@material-ui/core";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const FlexForm = styled.form`
   margin: 50px;
@@ -13,8 +14,7 @@ class VehicleActions extends Component {
     createVehicleMake: "",
     createVehicleModel: "",
     createVehiclePrice: "",
-    createVehicleColor: "",
-    deleteVehicleModel: ""
+    createVehicleColor: ""
   };
 
   handleTextChange = e => {
@@ -45,23 +45,6 @@ class VehicleActions extends Component {
           createVehicleModel: "",
           createVehiclePrice: "",
           createVehicleColor: ""
-        });
-      });
-  };
-
-  deleteVehicle = e => {
-    e.preventDefault();
-    fetch(`/api/vehicles/${this.state.deleteVehicleModel}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(result => this.props.deleteVehicle(this.state.deleteVehicleModel))
-      .then(() => {
-        this.setState({
-          deleteVehicleModel: ""
         });
       });
   };
@@ -102,21 +85,13 @@ class VehicleActions extends Component {
             Create Vehicle
           </Button>
         </FlexForm>
-        <FlexForm onSubmit={this.deleteVehicle}>
-          <TextField
-            onChange={this.handleTextChange}
-            id="deleteVehicleModel"
-            label="Model"
-            value={this.state.deleteVehicleModel}
-            variant="outlined"
-          />
-          <Button type="submit" variant="contained">
-            Delete Vehicle
-          </Button>
-        </FlexForm>
       </div>
     );
   }
 }
+
+VehicleActions.propTypes = {
+  createVehicle: PropTypes.func
+};
 
 export default VehicleActions;

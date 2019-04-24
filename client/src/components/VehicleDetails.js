@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Center = styled.div`
   display: flex;
@@ -38,5 +39,9 @@ class VehicleDetails extends Component {
     );
   }
 }
+
+VehicleDetails.propTypes = {
+  match: PropTypes.object
+};
 
 export default VehicleDetails;
