@@ -8,17 +8,15 @@ const Wrapper = styled.div`
   padding: 50px;
 `;
 
-const deleteVehicle = (model, props) => {
-  console.log("deleting", model);
-
-  fetch(`/api/vehicles/${model}`, {
+const deleteVehicle = (id, props) => {
+  fetch(`/api/vehicles/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json"
     }
   })
     .then(res => res.json())
-    .then(result => props.deleteVehicle(model));
+    .then(result => props.deleteVehicle(id));
 };
 
 const VehiclesList = props => (
@@ -30,7 +28,7 @@ const VehiclesList = props => (
         <Link to={`/vehicles/${vehicle._id}`}>details</Link>
         &nbsp;
         <Button
-          onClick={() => deleteVehicle(vehicle.model, props)}
+          onClick={() => deleteVehicle(vehicle._id, props)}
           type="submit"
           variant="contained"
         >

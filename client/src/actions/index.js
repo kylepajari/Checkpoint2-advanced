@@ -12,9 +12,9 @@ export function createVehicle(vehicle) {
   };
 }
 
-export function deleteVehicle(model) {
+export function deleteVehicle(id) {
   return {
     type: "DELETE_VEHICLE",
-    value: model
+    value: id
   };
 }

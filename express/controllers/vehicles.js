@@ -15,8 +15,8 @@ const createVehicle = car => {
   });
 };
 
-const deleteVehicle = _model => {
-  return VehiclesModel.deleteOne({ model: _model });
+const deleteVehicle = id => {
+  return VehiclesModel.deleteOne({ _id: id });
 };
 
 const getById = id => {

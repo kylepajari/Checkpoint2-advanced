@@ -10,7 +10,7 @@ const vehicles = (state = [], action) => {
       newState.push(action.value);
       return newState;
     case "DELETE_VEHICLE":
-      const index = newState.findIndex(v => v.model === action.value);
+      const index = newState.findIndex(v => v._id === action.value);
       newState.splice(index, 1);
       return newState;
     default:
